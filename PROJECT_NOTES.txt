@@ -1,0 +1,97 @@
+# LeakWatch3D
+
+A short animated explanation of a smart water leak detection system:
+**measure -> collect -> send -> analyze -> alert.** The whole scene is built at runtime
+from C# (no prefabs or assets to wire up).
+
+## Open and run
+
+1. Add the `LeakWatch3D` folder in Unity Hub (Unity 6000.0.80f1) and open it.
+2. Open `Assets/Scenes/SampleScene` and press **Play**.
+3. The story starts by itself and plays through six scenes, then loops.
+
+## Controls
+
+| Key | Action |
+|-----|--------|
+| Space | Next scene |
+| B | Previous scene |
+| A | Auto-play on / off |
+| L | Start the leak |
+| R | Repair the leak |
+| F9 | Save screenshots of all six scenes |
+
+F9 steps through the scenes, waits 2 seconds on each and saves PNGs to
+`LeakWatch3D/Screenshots/` (scene 6 gets one extra shot after the alert appears).
+
+## The six scenes
+
+1. **Supply** - water flows from the pump through one underground main to UB, then TP2.
+2. **Measure** - Station A (UB-IN) and Station B (TP2-IN). All four sensors (Pressure, Flow Rate,
+   Vibration, Location) keep their working mechanism visible and animating. The camera glides through
+   them in order, about 3 seconds each; the active one is enlarged and its value pops out. It ends
+   with a wide shot of the station with all four working together.
+3. **Collect** - the data path is wireless only. Each sensor has a small Wi-Fi module (green board,
+   metal shield, antenna, LED) and a battery pack. Its LED blinks and the value is packed with the
+   location tag into a small packet at the module.
+4. **Send (Wi-Fi)** - three Wi-Fi arcs in the sensor's colour travel from the antenna on the chamber's
+   plastic lid to the router on the building wall (its LEDs blink); the signal then goes router ->
+   monitor, and that row updates at that instant with a flash. A Wi-Fi icon on each station card
+   pulses on every received packet.
+5. **Leak** - UB's lower basement wall is cut away: hairline crack, thin spray, growing puddle.
+   Vibration ripples run along the pipe to both stations.
+6. **Analyze** - Station A and Station B are compared side by side; the pressure and flow
+   markers leave the green normal band, and the line map pins the leak on UB.
+
+## Readings (simulated, updated once per second, small noise)
+
+| | Station A (UB-IN) | Station B (TP2-IN) |
+|---|---|---|
+| Normal | 4.2 bar, 12.0 L/s, 0.1 mm/s | 3.9 bar, 11.5 L/s, 0.1 mm/s |
+| Leak | 4.1 bar, 12.1 L/s, 0.6 mm/s | 3.4 bar, 10.3 L/s, 0.9 mm/s |
+
+Readings are rounded to one decimal, so the number that pops out of a sensor is exactly the
+number the monitor shows. B is always slightly lower than A (UB takes its share, plus pipe friction); that normal
+difference is the baseline. Detection is **rule-based** (the A-to-B difference leaves the
+baseline in pressure, flow and vibration together). No ML model and no accuracy numbers are shown.
+
+## 2-minute speaking script
+
+**Scene 1 - Supply (about 15 s).**
+"This is a campus water line. One pump supplies two buildings through a single underground
+main. Water reaches UB first, then continues on to TP2. We can't see inside a buried pipe, so
+we put sensors on it."
+
+**Scene 2 - Measure (about 45 s).**
+"This is Station A, just before the water enters UB. All four sensors keep working while we
+look at each in turn. Pressure: water pushes a thin diaphragm, it bends, and a strain gauge turns
+that bend into a number in bar. Flow rate: water spins a small turbine, and a pickup flashes each
+time a magnet passes, so we count turns and get litres per second. Vibration: a small mass on a
+crystal shakes with the pipe wall, and the crystal turns that into a signal. The fourth, Location,
+measures nothing in the water. It is the station's ID tag, UB-IN, so we always know where a
+reading comes from. Here they all work together."
+
+**Scene 3 - Collect (about 15 s).**
+"Nothing is wired. Every sensor has its own small Wi-Fi module with a battery. When a reading is
+taken the module's LED blinks and the value is packed together with the location tag into a
+small packet."
+
+**Scene 4 - Send (about 25 s).**
+"The chamber has a plastic lid so the signal gets out above the soil. Wi-Fi arcs in each
+sensor's colour travel from the lid antenna to the router on the building wall, whose LEDs blink.
+From the router the signal goes to the monitor, and that row updates at that instant with a
+flash. The numbers are exactly the ones that came out of the sensors, and the Wi-Fi icon on the
+card pulses every time a packet arrives."
+
+**Scene 5 - Leak (about 15 s).**
+"Now a small leak starts inside UB's basement. We cut away the wall to show it: a hairline
+crack, a thin spray, and a puddle slowly growing. The leak shakes the pipe, and the vibration
+travels along the wall to both stations, reaching the nearer one first and stronger."
+
+**Scene 6 - Analyze and alert (about 25 s).**
+"Station B is normally a little lower than Station A, because UB uses some water and the pipe
+has friction. That normal difference is our baseline. When the leak starts, the pressure and
+flow differences leave the green band and turn red, and vibration rises at both stations.
+Because the leak is between the two stations, the map highlights the section from A to B and
+drops a pin on UB: 'Leak detected, inside UB'. All data here is simulated and the detection
+is rule-based, so our trained model can replace it later."
