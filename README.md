@@ -11,6 +11,12 @@
 
 **An interactive real-time 3D Digital Twin and IoT telemetry simulation for municipal water infrastructure, featuring procedural mesh generation, wireless packet pipelines, and rule-based differential leak localization.**
 
+<br/>
+
+<img src="Screenshots/scene6_analyze_alert.png" width="100%" alt="AquaTwin-3D Hero Banner" />
+
+<br/>
+
 [Overview](#-overview) • [Core Engineering](#-core-engineering-features) • [System Architecture](#-system-architecture) • [Telemetry Specifications](#-telemetry--sensor-specifications) • [Narrative Tour](#-6-stage-guided-tour) • [Getting Started](#-getting-started)
 
 </div>
@@ -188,26 +194,35 @@ AquaTwin-3D/
   <table>
     <tr>
       <td width="50%">
-        <p align="center"><b>Pipeline Supply & Routing</b></p>
-        <img src="Screenshots/scene1_supply.png" onerror="this.src='https://placehold.co/600x340/1e293b/white?text=1.+Supply+Pipeline'" alt="Supply Pipeline" width="100%"/>
+        <p align="center"><b>1. Pipeline Supply & Campus Mainline</b></p>
+        <img src="Screenshots/scene1_supply.png" alt="1. Supply Pipeline" width="100%"/>
       </td>
       <td width="50%">
-        <p align="center"><b>Sensor Array & Working Mechanism</b></p>
-        <img src="Screenshots/scene2_measure.png" onerror="this.src='https://placehold.co/600x340/1e293b/white?text=2.+IoT+Sensor+Array'" alt="Sensor Array" width="100%"/>
+        <p align="center"><b>2. 4-Channel Sensor Station (UB-IN)</b></p>
+        <img src="Screenshots/scene2_measure.png" alt="2. IoT Sensor Station" width="100%"/>
       </td>
     </tr>
     <tr>
       <td width="50%">
-        <p align="center"><b>Wireless Telemetry & Packet Routing</b></p>
-        <img src="Screenshots/scene4_send.png" onerror="this.src='https://placehold.co/600x340/1e293b/white?text=4.+Wireless+Telemetry'" alt="Wireless Telemetry" width="100%"/>
+        <p align="center"><b>3. Wireless Module Packet Assembly</b></p>
+        <img src="Screenshots/scene3_collect.png" alt="3. Wireless Module Packet" width="100%"/>
       </td>
       <td width="50%">
-        <p align="center"><b>Differential Analysis & Leak Alert</b></p>
-        <img src="Screenshots/scene6_analyze_alert.png" onerror="this.src='https://placehold.co/600x340/1e293b/white?text=6.+Leak+Alert+Triggered'" alt="Leak Alert" width="100%"/>
+        <p align="center"><b>4. Wi-Fi Arcs & Edge Router Ingestion</b></p>
+        <img src="Screenshots/scene4_send.png" alt="4. Wireless Telemetry Routing" width="100%"/>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <p align="center"><b>5. Pipeline Rupture & Leak Jet Dynamics</b></p>
+        <img src="Screenshots/scene5_leak.png" alt="5. Pipe Rupture & Water Spray" width="100%"/>
+      </td>
+      <td width="50%">
+        <p align="center"><b>6. Differential Analysis & Active Leak Alert</b></p>
+        <img src="Screenshots/scene6_analyze_alert.png" alt="6. Active Leak Alert Triggered" width="100%"/>
       </td>
     </tr>
   </table>
-  <i>Tip: Press <kbd>F9</kbd> in Play mode to regenerate high-resolution screenshots into the <code>Screenshots/</code> folder.</i>
 </div>
 
 ---
